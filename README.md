@@ -1,2 +1,2 @@
 # BTC-prediction
-For fun
+Just for fun!
