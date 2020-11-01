@@ -3,7 +3,7 @@ tf.disable_v2_behavior()
 import numpy as np
 import time
 
-def reducedimension(input_, dimension = 2, learning_rate = 0.01, hidden_layer = 256, epoch = 20):
+def reducedimension(input_, dimension = 2, learning_rate = 0.01, hidden_layer = 256, epoch = 20, echo_epoch=200):
     
     input_size = input_.shape[1]
     X = tf.placeholder("float", [None, input_size])
@@ -34,7 +34,7 @@ def reducedimension(input_, dimension = 2, learning_rate = 0.01, hidden_layer = 
     for i in range(epoch):
         last_time = time.time()
         _, loss = sess.run([optimizer, cost], feed_dict={X: input_})
-        if (i + 1) % 100 == 0:
+        if (i + 1) % echo_epoch == 0:
             print('epoch:', i + 1, 'loss:', loss, 'time:', time.time() - last_time)
         
     vectors = sess.run(second_layer_encoder, feed_dict={X: input_})
