@@ -33,7 +33,7 @@ def reducedimension(input_, dimension = 2, learning_rate = 0.01, hidden_layer = 
     for i in range(epoch):
         last_time = time.time()
         _, loss = sess.run([optimizer, cost], feed_dict={X: input_})
-        if (i + 1) % 10 == 0:
+        if (i + 1) % 100 == 0:
             print('epoch:', i + 1, 'loss:', loss, 'time:', time.time() - last_time)
         
     vectors = sess.run(second_layer_encoder, feed_dict={X: input_})
